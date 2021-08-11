@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var tbcl = "";
+        //  const use = document.getElementById('useinp');
+        // const cop = document.getElementById('coupout');
+
+        function calla(value) {
+            tbcl = tbcl + value;
+            document.getElementById('useinp').value = tbcl;
+
+        }
+
+        function exec() {
+            if (tbcl == "" || tbcl.length == 0) {
+                alert("need input");
+                return;
+            }
+            try {
+                //alert(tbcl);
+                ans = eval(tbcl);
+                document.getElementById('coupout').value = ans;
+
+            } catch (e) {
+                alert("invalid");
+            }
+        }
+
+        function reset() {
+            document.getElementById('useinp').value = "";
+            document.getElementById('coupout').value = "";
+            tbcl = "";
+        }
+
+        function removech() {
+            tbcl = tbcl.substring(0, tbcl.length - 1);
+            document.getElementById('useinp').value = tbcl;
+
+        }
+    </script>
+    <style>
+        body {
+            background: rgb(255, 226, 218);
+            color: rgb(42, 42, 42);
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        input {
+            padding: 16px 10px;
+            width: 100px;
+            border: 0;
+            font: size 2em;
+            background-color: #233;
+            color: #eee;
+            text-align: right;
+        }
+        
+        td {
+            font-size: 2em;
+            padding: 0.7em;
+            text-align: center;
+            cursor: default;
+            transition: 0.2s;
+        }
+        
+        td:hover {
+            background-color: rgb(199, 199, 199);
+        }
+        
+        .container {
+            width: 400px;
+            background: #fff;
+            box-shadow: 0 20px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <input type="text" id="useinp" placeholder="0" />
+        <input type="text" id="coupout" placeholder="0" />
+
+        <table>
+            <tr>
+                <td onclick="calla('(')">(</td>
+                <td onclick="calla(')')">)</td>
+                <td onclick="removech()">&lt;</td>
+                <td onclick="calla('+')">+</td>
+            </tr>
+            <tr>
+                <td onclick="calla('7')">7</td>
+                <td onclick="calla('8')">8</td>
+                <td onclick="calla('9')">9</td>
+                <td onclick="calla('-')">-</td>
+            </tr>
+            <tr>
+                <td onclick="calla('4')">4</td>
+                <td onclick="calla('5')">5</td>
+                <td onclick="calla('6')">6</td>
+                <td onclick="calla('*')">*</td>
+            </tr>
+            <tr>
+                <td onclick="calla('1')">1</td>
+                <td onclick="calla('2')">2</td>
+                <td onclick="calla('3')">3</td>
+                <td onclick="calla('/')">/</td>
+            </tr>
+            <tr>
+                <td onclick="reset()">c</td>
+                <td onclick="calla('0')">0</td>
+                <td onclick="calla('.')">.</td>
+                <td onclick="exec()">=</td>
+            </tr>
+        </table>
+
+    </div>
+</body>
+
+</html>
